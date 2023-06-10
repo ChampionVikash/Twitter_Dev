@@ -10,6 +10,6 @@ app.listen(3000, async () => {
     await connect();
     console.log('Mongo db connected');
     const TweetRepo = new TweetRepository();
-    const tweet = await TweetRepo.getWithComments('648308722982999f259248fc');
-    console.log(tweet);
+    const tweet = await TweetRepo.getAll(2, 4);
+    console.log(tweet[0].contentWithEmail);
 });   
