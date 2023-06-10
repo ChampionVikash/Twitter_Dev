@@ -1,6 +1,6 @@
 # Twitter_Dev
 
-# Requirements
+## Requirements
 
 - User should be able to create a post
     - [The post/tweet cannot be more than 250 chars]
