@@ -9,7 +9,7 @@ class TweetService {
     async create(data) {
         const content = data.content;
         const tags = content.match(/#[a-zA-Z0-9_]+/g)
-                        .map((tag) => tag.substring(1).toLowerCase()); // this regex extracts hashtags
+                        .map((tag) => tag.substring(1).toLowerCase());
         const tweet = await this.tweetRepository.create(data);
         let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
         let titleOfPresenttags = alreadyPresentTags.map(tags => tags.title);
@@ -24,10 +24,12 @@ class TweetService {
         });
         return tweet;
     }
+
+    async get(tweetId) {
+        const tweet = await this.tweetRepository.getWithComments(tweetId);
+        return tweet;
+    }
 }
 
 export default TweetService;
 
-/*
-    this is my #first #tweet . I am really #excited
-*/
